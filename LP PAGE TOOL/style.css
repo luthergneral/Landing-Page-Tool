@@ -4,15 +4,10 @@
       background: #f4f4f4;
     }
 
-    .header {
-      background-color: #4A4A4A;
-      height: 50px;
-    }
-
     .controls {
       display: flex;
-      justify-content: space-evenly;
-      background-color: #4A4A4A;
+      justify-content: space-between;
+      background-color: #121212;
       padding: 20px;
       height: 300px;
     }
@@ -112,7 +107,7 @@
     }
 
     .left { left: 2%; }
-    .center { left: 50%; transform: translate(-50%, -50%); }
+    .center { left: 55%; transform: translate(-50%, -50%); }
 
     .hero-image img {
       width: 90%;

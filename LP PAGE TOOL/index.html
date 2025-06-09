@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./header.css">
+  <link rel="stylesheet" href="./mobileview.css">
 <head>
   <meta charset="UTF-8">
   <title>Landing Page Tool</title>
@@ -8,7 +10,46 @@
   </style>
 </head>
 <body>
-  <div class="header"></div>
+  <div class="header-betmgm">
+    <div class="header-logo">
+      <img src="https://scmedia.itsfogo.com/$-$/a81dc586a10a4528b06f33ec41627056.svg" alt="BetMGM" class="mobile-logo">
+    </div>
+    <div class="betmgm-button-container">
+      <a class="button button-secondary-betmgm">Log In</a>
+      <a class="button button-primary-betmgm">Sign Up</a>
+    </div>
+  </div>
+
+  <div class="header-borgata">
+    <div class="header-logo">
+      <img src="https://scmedia.borgataonline.com/$-$/d0abad2cb37d449bbeaab367f2e475f5.svg" class="brand-logo" alt="Borgata">
+    </div>
+    <div class="borgata-button-container">
+      <a class="button button-secondary-borgata">LOG IN</a>
+      <a class="button button-primary-borgata">REGISTER</a>
+    </div>
+  </div>
+
+  <div class="header-wof">
+    <div class="header-logo">
+      <img src="https://scmedia.wheeloffortunecasino.com/$-$/0562de9d17fb436cbad1a27a4b3942be.svg" alt="BetMGM" class="mobile-logo">
+    </div>
+    <div class="wof-button-container">
+      <a class="button button-secondary-wof">LOG IN</a>
+      <a class="button button-primary-wof">SIGN UP</a>
+    </div>
+  </div>
+
+  <div class="header-pc">
+    <div class="header-logo">
+      <img src="https://scmedia.nj.partycasino.com/$-$/9266f52ed72f4a819631efd0854b8a17.svg" alt="BetMGM" class="mobile-logo">
+    </div>
+    <div class="pc-button-container">
+      <a class="button button-secondary-pc">LOG IN</a>
+      <a class="button button-primary-pc">SIGN UP</a>
+    </div>
+  </div>
+
   <div id="preview" class="preview-container">
     <div id="hero" class="hero-image left">
       <img id="heroImg" src="" alt=""></div>
@@ -26,6 +67,13 @@
         </div>
     </div>
     <div class="upload-container">
+        <label style="margin-bottom: 1rem;">
+          Hero Position
+          <select id="heroPosition" style="color: black;">
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+          </select>
+        </label>
         <label>
           Desktop Background
         </label>
@@ -40,14 +88,12 @@
         <input type="file" id="heroUpload" accept="image/png">
         <button onclick="resetView()">Reset</button>
     </div>
-    <div class="hero-position">
-      <label>
-      Hero Position
-      <select id="heroPosition">
-        <option value="left">Left</option>
-        <option value="center">Center</option>
-      </select>
-    </label>
+    <div class="mobile-view">
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <label class="mobile-label">Mobile View</label>
     </div>
   </div>
 
@@ -56,6 +102,9 @@
     const heroDiv = document.getElementById('hero');
     const heroImg = document.getElementById('heroImg');
     const mobileUpload = document.getElementById('mobileImg');
+    const bgUpload = document.getElementById('bgUpload');
+    const mobileUpload2 = document.getElementById('mobileUpload');
+    const heroUpload = document.getElementById('heroUpload');
 
     document.getElementById('heroPosition').addEventListener('change', function () {
       heroDiv.className = `hero-image ${this.value}`;
@@ -80,7 +129,45 @@
     function resetView() {
       preview.style.backgroundImage = '';
       heroImg.src = '';
+      bgUpload.value = '';
+      mobileUpload2.value = '';
+      heroUpload.value = '';
     }
+
+    const headers = {
+      'betmgm': document.querySelector('.header-betmgm'),
+      'borgata': document.querySelector('.header-borgata'),
+      'wof': document.querySelector('.header-wof'),
+      'pc': document.querySelector('.header-pc'),
+    };
+
+    const icons = {
+      'betmgm': document.querySelector('.betmgm-icon'),
+      'borgata': document.querySelector('.borgata-icon'),
+      'wof': document.querySelector('.wof-icon'),
+      'pc': document.querySelector('.pc-icon'),
+  };
+
+  const controls = document.querySelector('.controls');
+
+    const headerBackgrounds = {
+      'betmgm': '#121212',
+      'borgata': '#292a2e',
+      'wof': '#121212',
+      'pc': '#211551',
+    };
+
+  function showHeader(brand) {
+    Object.keys(headers).forEach(key => {
+      headers[key].style.display = (key === brand) ? 'flex' : 'none';
+    });
+
+    controls.style.backgroundColor = headerBackgrounds[brand];
+  }
+  
+  Object.keys(icons).forEach(brand => {
+    icons[brand].addEventListener('click', () => showHeader(brand));
+  });
   </script>
 </body>
 </html>
