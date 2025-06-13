@@ -82,12 +82,6 @@
       outline: 2px solid transparent;
       outline-offset: 2px;
     }
-    
-    @media (min-width: 768px) {
-      .button-40 {
-        padding: .75rem 1.5rem;
-      }
-    }
 
     .preview-container {
       border: 2px solid #ccc;
@@ -106,11 +100,11 @@
       transform: translateY(-50%);
     }
 
-    .left { left: 2%; }
+    .left { left: 5%; }
     .center { left: 55%; transform: translate(-50%, -50%); }
 
     .hero-image img {
-      width: 90%;
+      width: 80%;
       height: auto;
     }
 
